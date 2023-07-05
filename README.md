@@ -93,3 +93,41 @@ module.exports = {
 
 tsconfig.node.json 报错，将 `"module": "ESNEXT"`, => `"module": "esnext"`
 eslint 报错 module is xxx ` rules: {'no-undef': 'off'}`
+
+## element-plus
+
+## 环境变量
+
+- .env.development
+- .env.production
+- .env.test
+
+通过 import.meta.env 获取环境变量
+
+## sass
+
+pnpm i sass -D
+
+- 全局引入
+- 按需引入
+
+```
+// 全局引入
+export default defineConfig({
+  ...
+   css: {
+    preprocessorOptions: {
+      scss: {
+        javascriptEnabled: true,
+        additionalData: '@import "@/src/styles/variable.scss";'
+      }
+    }
+  }
+});
+// 按需引入
+<style lang="scss" scoped>
+  @import "@/assets/scss/globalVar.scss";
+</style>
+```
+
+##
