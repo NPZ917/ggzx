@@ -24,6 +24,7 @@
     "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
     "@element-plus/icons-vue": "^2.1.0",
+    "@iconify-json/ep": "^1.1.11",
     "@rushstack/eslint-patch": "^1.2.0",
     "@tsconfig/node18": "^2.0.1",
     "@types/node": "^18.16.17",
