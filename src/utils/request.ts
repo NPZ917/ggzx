@@ -1,4 +1,5 @@
 import axios from 'axios'
+import useUserStore from '@/stores/module/user'
 
 const requset = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,
@@ -9,6 +10,11 @@ const requset = axios.create({
 })
 
 requset.interceptors.request.use((config) => {
+  const userStore = useUserStore()
+
+  if (userStore.token) {
+    config.headers.token = userStore.token
+  }
   return config
 })
 

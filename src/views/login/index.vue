@@ -36,12 +36,13 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 import { User, Lock } from '@element-plus/icons-vue'
-import useUserStore from '@/stores/user'
-import { useRouter } from 'vue-router'
+import useUserStore from '@/stores/module/user'
+import { useRouter, useRoute } from 'vue-router'
 import { getTime } from '@/utils/time'
 import type { FormInstance, FormRules } from 'element-plus'
 
 let $router = useRouter()
+let $route = useRoute()
 let useStore = useUserStore()
 let loginFormRef = ref<FormInstance>()
 
@@ -56,8 +57,8 @@ interface LoginForm {
 }
 
 const loginForm = reactive<LoginForm>({
-  username: '',
-  password: ''
+  username: 'admin',
+  password: 'atguigu123'
 })
 
 const validateUsername = (rule: any, value: any, callback: any) => {
@@ -91,7 +92,8 @@ const login = async (formEl: FormInstance | undefined) => {
   loading.value = true
   try {
     await useStore.userLogin(loginForm)
-    $router.replace('/')
+    let redirect: any = $route.query.redirect
+    $router.push({ path: redirect || '/' })
     ElNotification({
       type: 'success',
       title: `HI, ${getTime()}好`,

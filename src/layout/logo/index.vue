@@ -1,12 +1,19 @@
 <template>
   <div class="logo">
     <img v-if="setting.logoHidden" :src="setting.logo" alt="" />
-    <p>{{ setting.title }}</p>
+    <p v-if="!settingStore.isCollapse">{{ setting.title }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
 import setting from '@/setting'
+import useSettingStore from '@/stores/module/setting'
+let settingStore = useSettingStore()
+</script>
+<script lang="ts">
+export default {
+  name: 'Logo'
+}
 </script>
 
 <style lang="scss" scoped>
@@ -17,11 +24,11 @@ import setting from '@/setting'
   padding: 20px 0;
   img {
     height: $base-menu-logo-height;
-    margin-right: 20px;
   }
   p {
     color: #fff;
     font-size: $base-logo-title-fontSize;
+    margin-left: 20px;
   }
 }
 </style>

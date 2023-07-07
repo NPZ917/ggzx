@@ -73,7 +73,7 @@ export default defineConfig({
     /** 接口代理 */
     proxy: {
       '/api': {
-        target: 'https://mock.presstime.cn/mock/64a401f2ace0545a9f3f65f2/ggzx',
+        target: 'http://sph-api.atguigu.cn',
         ws: true,
         /** 是否允许跨域 */
         changeOrigin: true,
