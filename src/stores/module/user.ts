@@ -1,9 +1,23 @@
 import { defineStore } from 'pinia'
+// @ts-ignore
+import cloneDeep from 'lodash/cloneDeep'
 import { loginApi, getUserInfoApi, logoutApi } from '@/api/user'
 import type { LoginFormData, LoginResponseData, UserInfoResponseData } from '@/api/user/type'
 import type { UserState } from '../type'
 import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
-import { constantRoutes } from '@/router/routes'
+import { constantRoutes, asyncRoutes, anyRoutes } from '@/router/routes'
+import router from '@/router'
+
+const filter = (asyncRoutes: any, routes: any) => {
+  return asyncRoutes.filter((item: any) => {
+    if (routes.includes(item.name)) {
+      if (item.children && item.children.length > 0) {
+        item.children = filter(item.children, routes)
+      }
+      return true
+    }
+  })
+}
 
 const useUserStore = defineStore('User', {
   state: (): UserState => {
@@ -31,6 +45,13 @@ const useUserStore = defineStore('User', {
       if (result.code == 200) {
         this.username = result.data.name
         this.avatar = result.data.avatar
+        const userRoutes = filter(cloneDeep(asyncRoutes), result.data.routes)
+        this.menuRoutes = [...constantRoutes, ...userRoutes, ...anyRoutes]
+        const asyncUserRoutes = [...userRoutes, ...anyRoutes]
+        asyncUserRoutes.forEach((route: any) => {
+          router.addRoute(route)
+        })
+
         return 'ok'
       } else {
         return Promise.reject(new Error(result.message))

@@ -1,14 +1,12 @@
 // 路由鉴权
 import nprogress from 'nprogress'
 import 'nprogress/nprogress.css'
-
-nprogress.configure({ showSpinner: false })
-
 import router from '@/router'
 import pinia from '@/stores'
 import useUserStore from '@/stores/module/user'
 import setting from './setting'
 
+nprogress.configure({ showSpinner: false })
 const userStore = useUserStore(pinia)
 
 router.beforeEach(async (to: any, from: any, next: any) => {
@@ -24,7 +22,7 @@ router.beforeEach(async (to: any, from: any, next: any) => {
       else {
         try {
           await userStore.getUserInfo()
-          next()
+          next({ ...to })
         } catch (error) {
           await userStore.logout()
           next({ path: '/login', query: { redirect: to.path } })

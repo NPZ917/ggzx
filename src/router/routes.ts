@@ -22,7 +22,6 @@ export const constantRoutes = [
       }
     ]
   },
-
   {
     path: '/login',
     name: 'login',
@@ -56,7 +55,10 @@ export const constantRoutes = [
       icon: 'HomeFilled',
       hidden: false
     }
-  },
+  }
+]
+
+export const asyncRoutes = [
   // 权限管理
   {
     path: '/acl',
@@ -155,7 +157,10 @@ export const constantRoutes = [
         }
       }
     ]
-  },
+  }
+]
+
+export const anyRoutes = [
   {
     path: '/:pathMatch(.*)*',
     redirect: '404',
