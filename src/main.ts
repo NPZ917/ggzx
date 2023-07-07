@@ -12,9 +12,11 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
 
+import './permission'
+import { isHasButton } from '@/directive/has'
+
+isHasButton(app)
 app.use(pinia)
 app.use(router)
-
-import './permission'
 
 app.mount('#app')

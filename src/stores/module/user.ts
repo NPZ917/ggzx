@@ -25,7 +25,8 @@ const useUserStore = defineStore('User', {
       token: GET_TOKEN('TOKEN'),
       menuRoutes: constantRoutes,
       username: '',
-      avatar: ''
+      avatar: '',
+      buttons: []
     }
   },
   actions: {

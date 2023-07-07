@@ -1,16 +1,7 @@
 <template>
-  <div>{{ userStore.username }}</div>
+  <div>home</div>
 </template>
 
-<script setup lang="ts">
-import useUserStore from '@/stores/module/user'
-// import { onMounted } from 'vue'
-
-let userStore = useUserStore()
-
-// onMounted(() => {
-//   userStore.getUserInfo()
-// })
-</script>
+<script setup lang="ts"></script>
 
 <style scoped></style>
