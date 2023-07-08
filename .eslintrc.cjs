@@ -15,6 +15,7 @@ module.exports = {
   rules: {
     'no-undef': 'off',
     'vue/multi-word-component-names': 0,
-    'vue/no-reserved-component-names': 'off'
+    'vue/no-reserved-component-names': 'off',
+    'vue/valid-attribute-name': 'off'
   }
 }
