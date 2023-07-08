@@ -81,6 +81,7 @@ import {
 import type { Records, TradeMarkResponseData, TradeMark } from '@/api/product/trademark/type'
 import type { UploadProps } from 'element-plus'
 import type { FormInstance, FormRules } from 'element-plus'
+import { tr } from 'element-plus/es/locale'
 
 const currentPage = ref(1)
 const pageSize = ref(3)
@@ -191,6 +192,8 @@ const deleteTradeMark = async (id: number) => {
   // console.error(result)
   if (result.code === 200) {
     ElMessage.success('删除品牌成功')
+    currentPage.value = tradeMarkData.value.length > 1 ? currentPage.value : currentPage.value - 1
+    getHasTrafeMark()
   } else {
     ElMessage.error('删除品牌失败')
   }
