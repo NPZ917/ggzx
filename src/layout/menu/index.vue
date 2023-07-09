@@ -56,11 +56,9 @@ export default {
 </script>
 
 <style>
-/*隐藏文字*/
 .el-menu--collapse .el-sub-menu__title span {
   display: none;
 }
-/*隐藏 > */
 .el-menu--collapse .el-sub-menu__title .el-sub-menu__icon-arrow {
   display: none;
 }

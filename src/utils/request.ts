@@ -24,7 +24,7 @@ requset.interceptors.response.use(
   },
   (error) => {
     let message = ' '
-    const status = error.response.status
+    const status = error.response.code
     switch (status) {
       case 401:
         message = '验证不通过'

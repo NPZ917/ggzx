@@ -87,6 +87,7 @@ export default {
     // background-color: pink;
     padding: 20px;
     overflow: auto;
+    transition: all 0.5s;
     &.collapse {
       width: calc(100vw - $base-menu-collapse-width);
       left: $base-menu-collapse-width;

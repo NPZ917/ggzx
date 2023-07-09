@@ -81,7 +81,6 @@ import {
 import type { Records, TradeMarkResponseData, TradeMark } from '@/api/product/trademark/type'
 import type { UploadProps } from 'element-plus'
 import type { FormInstance, FormRules } from 'element-plus'
-import { tr } from 'element-plus/es/locale'
 
 const currentPage = ref(1)
 const pageSize = ref(3)
